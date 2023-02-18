@@ -60,20 +60,20 @@ function validatePassword(password) {
   let hasNumber = false;
   let hasSpecialChar = false;
   
-  for (let i = 0; i < password.length; i++) {
-    const char = password.charAt(i);
-    if (char >= "A" && char <= "Z") {
+  for (let i of password) {
+    // const char = i;
+    if (i >= "A" && i <= "Z") {
       hasUpperCase = true;
-    } else if (char >= "a" && char <= "z") {
+    } else if (i >= "a" && i <= "z") {
       hasLowerCase = true;
-    } else if (char >= "0" && char <= "9") {
+    } else if (i >= "0" && i <= "9") {
       hasNumber = true;
     }
   }
   // Check special charecter
-  for (let j = 0; j < specialcharectors.length; j++) {
+  for (let j of specialcharectors) {
     
-    if (password.includes(specialcharectors[j])) {
+    if (password.includes(j)) {
       hasSpecialChar = true;
       break;
     }
