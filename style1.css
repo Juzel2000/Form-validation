@@ -1,3 +1,9 @@
+body{ 
+  background-size: cover;
+  background-color: #12181af2;
+  
+}
+
 input,
 button {
   width: 100%;
@@ -7,6 +13,8 @@ button {
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;
+  
+
   /* margin-bottom: 16px; */
 }
 
@@ -18,8 +26,13 @@ button {
 
 /* Style the container for inputs */
 .container {
-  background-color: #f1f1f1;
+  background-color: #293133;
   padding: 20px;
+  width: 40%;
+  margin: auto;
+  margin-top: 10%;
+  border-radius: 4%;
+
 }
 
 /* The message box is shown when the user clicks on the password field */
