@@ -69,9 +69,11 @@ passwordInput.onkeyup=function(){
 submitBtn.addEventListener('click',function(e){
   e.preventDefault()
   if(!validateEmail(emailInput.value) && !validatePassword(passwordInput.value)){
+    logged.style.color = "Green";
     logged.innerHTML = "Succcessfully Logged";
 
   }else{
+    logged.style.color = "Red";
     logged.innerHTML = "Login error";
 
   }
