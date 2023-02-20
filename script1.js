@@ -14,11 +14,15 @@ function validateEmail(email) {
   }
 
   //
-  const atIndex = email.indexOf('@');
-  const dotIndex = email.lastIndexOf('.');
-  if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex + 2 >= email.length) {
-    return 'Not valid';
+  for (let k of specialcharectors) {
+    firstLetter = email.charAt(0);
+    lastLetter = email.charAt(email.length-1)
+    if(firstLetter==k || lastLetter==k){
+      return "Please enter an email address";
+    }
+    
   }
+  
   
  
 
