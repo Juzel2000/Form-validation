@@ -1,6 +1,6 @@
 body{ 
   background-size: cover;
-  background-color: #12181af2;
+  background-color: #326678f2;
   
 }
 
@@ -26,7 +26,7 @@ button {
 
 /* Style the container for inputs */
 .container {
-  background-color: #485f65;
+  background-color: #000000;
   padding: 20px;
   width: 40%;
   margin: auto;
