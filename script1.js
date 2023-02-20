@@ -4,21 +4,56 @@ const submitBtn = document.querySelector("#submit");
 const emailError = document.querySelector("#emailError");
 const passwordError = document.querySelector("#passwordError");
 const logged = document.querySelector("#logged");
+//without Regex
 const specialcharectors = ["@", "!", "#", "%", "$","^","&","*","+","-",".","?","/",">","<",",","`","~","{","}","[","]","=","_","|"];
 
-function validateEmail(email){
-  function ValidateEmail(mail){
- if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
-  {
-    return 'valid email'
+function validateEmail(email) {
+  // Check if empty
+  if (!email) {
+    return "Please enter an email address";
   }
-    // alert("You have entered an invalid email address!")
-    return "invalidd"
+
+  //
+  for (let k of specialcharectors) {
+    firstLetter = email.charAt(0);
+    lastLetter = email.charAt(email.length-1)
+    if(firstLetter==k || lastLetter==k){
+      return "Please enter an email address";
+    }
+    
+  }
+  
+  
+ 
+
+  // Split the email into two parts, the username and domain
+  const parts = email.split("@");
+
+  // Make sure there are two parts
+  if (parts.length !== 2) {
+    return "Please enter a valid email address";
+  }
+
+  // Make sure the username and domain are not empty
+  const [username, domain] = parts;
+  if (!username || !domain) {
+    return "Please enter a valid email address";
+  }
+
+  // Check if the domain has a valid format
+  const domainParts = domain.split(".");
+  if (domainParts.length < 2) {
+    return "Please enter a valid email address";
+  }
+
+  // Make sure the last part of the domain is at least 2 characters long
+  const lastDomainPart = domainParts[domainParts.length - 1];
+  if (lastDomainPart.length < 2) {
+    return "Please enter a valid email address";
+  }
+
+  return ""; // If there are no errors, return an empty string
 }
-
-}
-
-
 
 function validatePassword(password) {
   // Check if password empty
@@ -68,11 +103,9 @@ function validatePassword(password) {
 
   return ""; // If there are no errors, return an empty string
 }
-passwordInput.onblur = function() {
-  console.log()
-}
 
-passwordInput.onkeyup = function() {
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault(); // To prevent reload !!
   const email = emailInput.value; // Get the current value of the email input
   const password = passwordInput.value; // Get the current value of the password input
   const emailErrorText = validateEmail(email); // Validate the email and get the error message
@@ -84,9 +117,8 @@ passwordInput.onkeyup = function() {
     logged.innerHTML = "";
   } else if (emailErrorText === "" && passwordErrorText === "") {
     // If there are no errors, clear the emailError and passwordError elements
-    emailError.innerHTML = "You can submit";
+    emailError.innerHTML = "";
     passwordError.innerHTML = "";
-    logged.innerHTML = "You can submit";
+    logged.innerHTML = "Succcessfully registered";
   }
-
-}
+});
