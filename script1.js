@@ -12,6 +12,14 @@ function validateEmail(email) {
   if (!email) {
     return "Please enter an email address";
   }
+
+  //
+  const atIndex = email.indexOf('@');
+  const dotIndex = email.lastIndexOf('.');
+  if (atIndex < 1 || dotIndex < atIndex + 2 || dotIndex + 2 >= email.length) {
+    return 'Not valid';
+  }
+  
  
 
   // Split the email into two parts, the username and domain
